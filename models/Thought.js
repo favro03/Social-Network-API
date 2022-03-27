@@ -1,4 +1,5 @@
 const {Schema, model, Types } = require('mongoose');
+const moment = require('moment');
 
 const ReactionSchema = new Schema (
     {
@@ -9,17 +10,22 @@ const ReactionSchema = new Schema (
         reactionBody:{
             type: String,
             required: true,
+            trim: true,
             maxlength: 280
         }, 
         username:{
             type: String,
             require: true,
-            ref: 'User'
         },
         createdAt: {
             type: Date,
             default: Date.now,
-            get: createdAtVal => dateFormat(createdAtVal)
+            get: createdAtVal => moment(createdAtVal).format('MMM DD, YYYY [at] hh:mm a')
+        }
+    },
+    {
+        toJSON: {
+            getters: true
         }
     }
 );
@@ -42,15 +48,16 @@ const ThoughtSchema = new Schema(
             ref: 'User'
         },
         reactions:[ReactionSchema],
-        
+    },
+    {
         toJSON: {
             virtuals: true,
             getters: true,
         },
-
         id: false
     }
 );
+//get total count of friends on retrieval
 ThoughtSchema.virtual('reactionCount').get(function() {
     return this.reactions.length;
 });
