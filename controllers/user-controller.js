@@ -1,5 +1,5 @@
 const { duration } = require('moment');
-const { User } = require('../models');
+const { User, Thought } = require('../models');
 const userController = {
     //get all users
     getAllUser(req, res){
@@ -63,17 +63,20 @@ const userController = {
         })
         .catch(err => res.status(400).json(err));
     },
-    //delete user
+    //delete user and associated thoughts
     deleteUser({ params }, res) {
-        User.findOneAndDelete({ _id: params.id })
-        .then(dbUserData => {
-            if (!dbUserData) {
-                resstatus(400).json({ message: 'No user found with this id!'});
-                return;
-            }
-            res.json(dbUserData);
-        })
-        .catch(err => res.status(400).json(err));
+        Thought.deleteMany({ userId: params.id })
+            .then(() => {
+                User.findOneAndDelete({ _id: params.id })
+                    .then(dbUserData => {
+                        if (!dbUserData) {
+                            res.status(400).json({ message: 'No user found with this id!'});
+                            return;
+                        }
+                        res.json(dbUserData);
+                    });
+                })
+                .catch(err => res.status(400).json(err));
     },
     //add a new friend to the users friend list
     addFriend({ params }, res) {
