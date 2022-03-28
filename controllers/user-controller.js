@@ -76,10 +76,13 @@ const userController = {
         .catch(err => res.status(400).json(err));
     },
     //add a new friend to the users friend list
-    addFriend({params}, res) {
-        Users.findOneAndUpdate({_id: params.id}, {$push: { friends: params.friendId}}, {new: true})
-        .populate({path: 'friends', select: ('-__v')})
-        .select('-__v')
+    addFriend({ params }, res) {
+        User.findOneAndUpdate(
+            { _id: params.userId }, 
+            {$push: { friends: params.friendId}},
+            {new: true})
+        
+       
         .then(dbUsersData => {
             if (!dbUsersData) {
                 res.status(404).json({message: 'No User with this particular ID!'});
@@ -87,8 +90,24 @@ const userController = {
             }
         res.json(dbUsersData);
         })
-        .catch(err => res.json(err));
+        .catch(err => res.status(400).json(err));
     },
+    //delete friend
+    deleteFriend({ params }, res) {
+        User.findOneAndUpdate(
+          { _id: params.userId },
+          { $pull: { friends: params.friendId } },
+          { new: true }
+        )
+          .then(dbUserData => {
+            if (!dbUserData) {
+              res.status(404).json({ message: 'No user with this id!'});
+              return;
+            }
+           res.json(dbUserData);
+          })
+          .catch(err => res.status(400).json(err));
+    }
 };
 
 module.exports = userController
