@@ -74,7 +74,7 @@ const thoughtController ={
         })
         .catch(err => res.status(400).json(err));
     },
-//DELETE to remove a thought by it _id
+//DELETE to remove a thought by its _id
     deleteThoughts({ params }, res) {
         Thought.findOneAndDelete({ _id: params.id })
         .then(dbThoughtData => {
@@ -85,7 +85,8 @@ const thoughtController ={
             res.json(dbThoughtData);
         })
         .catch(err => res.status(400).json(err));
-    }
+    },
+  
 
 };
 
