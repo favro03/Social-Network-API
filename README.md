@@ -12,7 +12,10 @@
 * [Questions](#questions)
 
 ## Walkthrough
-PLACEHOLDER FOR VIDEO WALKTHORUGH
+[!Users](https://www.awesomescreenshot.com/video/8123786?key=ec9fc38ba86b473e8dddadd0762b54dc)
+[!Thoughts](https://www.awesomescreenshot.com/video/8123852?key=3d621526e29b496dd8a0044516f0309c)
+[!Reactions](https://www.awesomescreenshot.com/video/8124060?key=277ec4a9a56ff49639af0483dfeac902)
+[!Friends](https://www.awesomescreenshot.com/video/8124133?key=eab701c8fb3eb1b29a8b6c4c9169b316)
 
 ## Installation
 1. Download the repo files at the below link
