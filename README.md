@@ -31,11 +31,16 @@ Testing restrful API calls with Insomnia
 * `GET` all users
 * `POST` a new user:
 
-`// example data`
-`{`
+ `// example data`
+  
+ `{`
+  
   `"username": "lernantino",`
-  `"email": "lernantino@gmail.com"`
-`}`
+   
+ `"email": "lernantino@gmail.com"`
+  
+ `}`
+  
 
 `/api/users/:userId`
 * `GET` a single user by its _id and populated thought and friend data
@@ -54,12 +59,18 @@ Testing restrful API calls with Insomnia
 `/api/thoughts/:thoughtId/reactions`
 * `POST` to create a reaction
 
-`// example data`
+`// example data` 
+
 `{`
+ 
   `"thoughtText": "Here's a cool thought...",`
+   
   `"username": "lernantino",`
+   
   `"userId": "5edff358a0fcb779aa7b118b"`
+   
 `}`
+ 
 
 `/api/thoughts/thoughtId/reactions/:reactionId`
 * `DELETE` delete a reaction by reaction Id
