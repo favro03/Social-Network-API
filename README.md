@@ -1,7 +1,7 @@
 # Social Network API
 
 ## Description
-  An API for a social network web applicaiton where users can share their thoughts, react to friends' thoughts, and create a friend list.
+  An API for a social network web applicaiton where users can share their thoughts, react to friends' thoughts, and create a friend list. The tools used to build this app include Express.js for routing, a MongoDB database, the Mongoose ODM, and moment to format timestamps.
 
 
 ## Table of Contents
